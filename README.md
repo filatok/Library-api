@@ -107,7 +107,39 @@ library-api/
 │   │   │   └── LibraryApiApplication.java
 ```
 
+## REST Endpoints
 
+Base URL: `http://localhost:8080`
+
+### Authors `/authors`
+
+| Method | Path | Description | Status |
+|---|---|---|---|
+| GET | `/authors` | Get all authors | `200 OK` |
+| GET | `/authors/{id}` | Get author by ID | `200 OK` |
+| GET | `/authors/{id}/books` | Get all books by author | `200 OK` |
+| POST | `/authors` | Create a new author (returns new ID) | `201 Created` |
+| PUT | `/authors/{id}` | Update an existing author | `200 OK` |
+| DELETE | `/authors/{id}` | Delete an author | `200 OK` |
+| POST | `/authors/{authorId}/books/{bookId}` | Assign a book to an author | `200 OK` |
+| DELETE | `/authors/{authorId}/books/{bookId}` | Remove a book from an author | `200 OK` |
+
+---
+
+### Books `/books`
+
+| Method | Path | Description | Status |
+|---|---|---|---|
+| GET | `/books` | Get all books | `200 OK` |
+| GET | `/books/{id}` | Get book by ID | `200 OK` |
+| GET | `/books/{id}/authors` | Get all authors of a book | `200 OK` |
+| POST | `/books` | Create a new book (returns new ID) | `201 Created` |
+| PUT | `/books/{id}` | Update an existing book | `200 OK` |
+| DELETE | `/books/{id}` | Delete a book | `200 OK` |
+| POST | `/books/{bookId}/authors/{authorId}` | Assign an author to a book | `200 OK` |
+| DELETE | `/books/{bookId}/authors/{authorId}` | Remove an author from a book | `200 OK` |
+
+---
 ## CORS Configuration
 
 CORS is open to all origins and methods (/**), configured in apiLayer/configurations/CorsConfiguration.java. Tighten this before going to production.
